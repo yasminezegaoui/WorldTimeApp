@@ -13,7 +13,8 @@ class WorldTime{
 
   Future<void> getTime() async{
 
-    // make the request
+    try{
+      // make the request
     Response response = await get(Uri.parse('http://worldtimeapi.org/api/timezone/$url'));
     Map data = jsonDecode(response.body);
     // ignore: avoid_print
@@ -31,6 +32,12 @@ class WorldTime{
 
     // set the time property
     time = now.toString();
+    }catch(e){
+      // ignore: avoid_print
+      print('vaught error: $e');
+    }
+
+    
   }
 
 }
